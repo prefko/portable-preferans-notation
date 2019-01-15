@@ -1,2 +1,2 @@
-# portable-preferans-notation
-Portable Preferans Notation
+# Portable Preferans Notation
+portable-preferans-notation
