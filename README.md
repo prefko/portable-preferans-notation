@@ -1,4 +1,4 @@
-# Portable Preferans Notation
+# Portable Preferans Notation - PPN
 [portable-preferans-notation](https://prefko.github.io/portable-preferans-notation/)
 
 **Portable Preferans Notation** (PPN) is a computer-processible format for recording and replaying [Preferans](https://en.wikipedia.org/wiki/Preference) games. It was invented in 2012. for internal database usage of the online preferans website [Prefko](http://prefko.com/).
