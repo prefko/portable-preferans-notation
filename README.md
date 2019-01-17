@@ -9,13 +9,13 @@
 
 ## PPN
 PPN notation has two sections:
-- Tag pair section
-- Dealtext section
+- Info section
+- Game section
 
-### Tag pair section
-This section contains general information about the game such as location, date, etc.
+### Info section
+Info section contains general information about the game such as location, date, etc.
 
-Tag pairs are listed on individual lines and enclosed in square brackets [ ... ]. Each tag pair consists of a tag name and a value. The value is wrapped in double-quotes. In, for example, [Date "2008.03.08"], the tag name is **Date** and **2008.03.08** is the value.
+The information is organized in tag pairs, which are listed on individual lines and enclosed in square brackets [ ... ]. Each tag pair consists of a tag name and a value. The value is wrapped in double-quotes. In, for example, [Date "2008.03.08"], the tag name is **Date** and **2008.03.08** is the value.
 
 This section is identical to the top section of **PGN**, see [example here](https://en.wikipedia.org/wiki/Portable_Game_Notation#Example).
 
@@ -25,5 +25,5 @@ Required tags are **Bula**, **Refe**, **Player{A|B|C}**, **Place{1|2|3}** and **
 
 Optional tags can include, but are not limited to: *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{A|B|C}*, etc.
 
-### Dealtext section
+### Game section
 ...todo
