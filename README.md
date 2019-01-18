@@ -21,9 +21,9 @@ This section is identical to the top section of the **PGN** notation, see [examp
 
 There are **required** and **optional** tags.
 
-Required tags are **Bula**, **Refe**, **Player<A|B|C>**, **Place{1|2|3}** and **Result{1|2|3}**. (*Where {1|2|3} indicates that there are 3 separate tags, each with only one of those numbers, same for {A|B|C}*)
+Required tags are **Bula**, **Refe**, **Player<A|B|C>**, **Place<1|2|3>** and **Result<1|2|3>**. (*Where <1|2|3> indicates that there are 3 separate tags, each with only one of those numbers, same for <A|B|C>*)
 
-Optional tags can include, but are not limited to: *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{A|B|C}*, etc.
+Optional tags can include, but are not limited to: *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name<A|B|C>*, etc.
 
 ### Game section
 Dealtext secion contains individual rounds of play ordered chronologically. Each round is stored on a distinct line and contains fixed-ordered subsections. Each subsection is separated by a space character.
@@ -122,32 +122,23 @@ One or two character subsection indicating any kontras or invitations.
 This subsection is simply encoded as follows:
 - 0: Nothing
 - I: Invitation
-- K{L|R}: Kontra
-- R{L|R}: Rekontra
-- S{L|R}: Subkontra
-- M{L|R}: Mortkontra
+- K<L|R>: Kontra
+- R<L|R>: Rekontra
+- S<L|R>: Subkontra
+- M<L|R>: Mortkontra
 
-{L|R} means that one of the letters L or R is used here to indicate which follower initiated the kontras.
-For example, RL means that the left follower started with a kontra and th emain player returned a rekontra.
+<L|R> means that one of the letters L or R is used here to indicate which follower initiated the kontras. For example, RL means that the left follower started with a kontra and th emain player returned a rekontra.
 
 #### value
-An intiger indicating the value of the contract.
-For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
+An intiger indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
 
 #### play
-Simple subsection showing the entire game play, a list of comma separated tricks encoded with 3 or 4 character, depending on the number of players involved.
-The last character is always one of M, L or R indicating which player won that trick. M for main, L for left follower and R for right follower.
-The characters preceding the winner indicate the cards as they were thrown.
+Simple subsection showing the entire game play, a list of comma separated tricks encoded with 3 or 4 character, depending on the number of players involved. The last character is always one of M, L or R indicating which player won that trick. M for main, L for left follower and R for right follower. The characters preceding the winner indicate the cards as they were thrown.
 
-For example, 2A1M means that the first player threw 8 Spade, then the second player threw 8 Diamond and the third player threw 7 Spade, and finally the main player won that trick.
-This also tells us who threw the first card in the next trick, while the very first tricks first thrower must be deduced from other information like who the dealer is and whether or not the contract was Sans.
+For example, 2A1M means that the first player threw 8 Spade, then the second player threw 8 Diamond and the third player threw 7 Spade, and finally the main player won that trick. This also tells us who threw the first card in the next trick, while the very first tricks first thrower must be deduced from other information like who the dealer is and whether or not the contract was Sans.
 
 #### score
-Relatively complex subsection encoding the tricks and score for all 3 players, comma separated.
-The simplest case is 0 which is used when the player did not play.
-The only other case contains 4 integers, colon separated.
-The first integer is the number of tricks the player took.
-The remaining 3 integers are, in order, the left soup, the middle and the right soup.
+Relatively complex subsection encoding the tricks and score for all 3 players, comma separated. The simplest case is 0 which is used when the player did not play. The only other case contains 4 integers, colon separated. The first integer is the number of tricks the player took. The remaining 3 integers are, in order, the left soup, the middle and the right soup.
 
 ### PPN Example
 
