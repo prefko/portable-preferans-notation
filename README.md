@@ -21,7 +21,7 @@ This section is identical to the top section of the **PGN** notation, see [examp
 
 There are **required** and **optional** tags.
 
-Required tags are **Bula**, **Refe**, **Player{A|B|C}**, **Place{1|2|3}** and **Result{1|2|3}**. (*Where {1|2|3} indicates that there are 3 separate tags, each with only one of those numbers, same for {A|B|C}*)
+Required tags are **Bula**, **Refe**, **Player<A|B|C>**, **Place{1|2|3}** and **Result{1|2|3}**. (*Where {1|2|3} indicates that there are 3 separate tags, each with only one of those numbers, same for {A|B|C}*)
 
 Optional tags can include, but are not limited to: *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{A|B|C}*, etc.
 
