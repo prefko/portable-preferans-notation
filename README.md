@@ -52,16 +52,41 @@ ID of the dealer, eg. 1.
 
 For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basically these concatenated hands and bonus cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
 
-| Card     | Mini | Enc  |
-| -------- | ---- | ---- |
-| 7 Spade  | 7S   | 1    |
-| 8 Spade  | 8S   | 2    |
-| 9 Spade  | 9S   | 3    |
-| 10 Spade | XS   | 4    |
-| J Spade  | JS   | 5    |
-| Q Spade  | QS   | 6    |
-| K Spade  | KS   | 7    |
-| A Spade  | AS   | 8    |
+| Card       | Mini | Enc  |
+| ---------- | ---- | ---- |
+| 7 Spade    | 7S   | 1    |
+| 8 Spade    | 8S   | 2    |
+| 9 Spade    | 9S   | 3    |
+| 10 Spade   | XS   | 4    |
+| J Spade    | JS   | 5    |
+| Q Spade    | QS   | 6    |
+| K Spade    | KS   | 7    |
+| A Spade    | AS   | 8    |
+| 7 Diamond  | 7D   | 9    |
+| 8 Diamond  | 8D   | A    |
+| 9 Diamond  | 9D   | B    |
+| 10 Diamond | XD   | C    |
+| J Diamond  | JD   | D    |
+| Q Diamond  | QD   | E    |
+| K Diamond  | KD   | F    |
+| A Diamond  | AD   | G    |
+| 7 Heart    | 7H   | H    |
+| 8 Heart    | 8H   | I    |
+| 9 Heart    | 9H   | J    |
+| 10 Heart   | XH   | K    |
+| J Heart    | JH   | L    |
+| Q Heart    | QH   | M    |
+| K Heart    | KH   | N    |
+| A Heart    | AH   | O    |
+| 7 Club     | 7C   | P    |
+| 8 Club     | 8C   | Q    |
+| 9 Club     | 9C   | R    |
+| 10 Club    | XC   | S    |
+| J Club     | JC   | T    |
+| Q Club     | QC   | U    |
+| K Club     | KC   | V    |
+| A Club     | AC   | W    |
+
 
 #### auction
 
