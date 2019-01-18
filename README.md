@@ -48,9 +48,11 @@ The id is basically a number followed by a dot.
 ID of the dealer, eg. 1.
 
 #### cards
-32 characters representing the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 bonus cards. Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
+32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 bonus cards. Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
 
 For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basically these concatenated hands and bonus cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
+
+Cards are encoded based on the following table:
 
 | Card       | Mini | Enc  |
 | ---------- | ---- | ---- |
@@ -87,8 +89,8 @@ For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basical
 | K Club     | KC   | V    |
 | A Club     | AC   | W    |
 
-
 #### auction
+
 
 #### exchange
 
@@ -106,17 +108,17 @@ For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basical
 
 
 
-[Bula "40"]
-[Refe "1"]
-[Player1 "cope"]
-[Player2 "silvio_pu"]
-[Player3 "elmacedon"]
-[Place1 "silvio_pu"]
-[Place2 "cope"]
-[Place3 "elmacedon"]
-[Result1 "458"]
-[Result2 "88"]
-[Result3 "-546"]
+[Bula "40"]  
+[Refe "1"]  
+[Player1 "cope"]  
+[Player2 "silvio_pu"]  
+[Player3 "elmacedon"]  
+[Place1 "silvio_pu"]  
+[Place2 "cope"]  
+[Place3 "elmacedon"]  
+[Result1 "458"]  
+[Result2 "88"]  
+[Result3 "-546"]  
 
 1. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,D,3 AR 4 10 0 8 2A1G,G9BG,2A1G,G9BG,2A1G,G9BG,2A1G,G9BD,2A1D,G9BD 7:0:8:0,3:24:0:0,0:0:0:0
 2. 2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 D,D,D
