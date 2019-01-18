@@ -142,8 +142,8 @@ Relatively complex subsection encoding the tricks and score for all 3 players, c
 
 ### PPN Example
 
-[Bula "40"]  
-[Refe "1"]  
+[Bula "60"]  
+[Refe "2"]  
 [Player1 "cope"]  
 [Player2 "silvio_pu"]  
 [Player3 "elmacedon"]  
