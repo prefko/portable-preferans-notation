@@ -54,7 +54,7 @@ For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basical
 
 Cards are encoded based on the following table:
 
-| Card       | Mini | Enc  |
+| Card       | Mini | Encoded  |
 | ---------- | ---- | ---- |
 | 7 Spade    | 7S   | 1    |
 | 8 Spade    | 8S   | 2    |
