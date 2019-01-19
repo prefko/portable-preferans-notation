@@ -1,3 +1,7 @@
+<a href="http://stojadinovic.net">
+  <img alt="Predrag Stojadinovic" src="https://en.stojadinovic.net/assets/images/logo-128x128-88.jpg" width="100">
+</a>
+
 # Portable Preferans Notation - PPN
 [portable-preferans-notation](https://prefko.github.io/portable-preferans-notation/)
 
