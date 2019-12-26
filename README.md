@@ -37,9 +37,9 @@ These subsections are:
 - **dealer**: player id
 - **cards**
 - **auction**: auction result
-- **exchange**: discarded cards, if any
-- **game**: chosen contract
-- **came**: players who decided to play
+- **discarded**: discarded cards, if any
+- **contract**: chosen contract
+- **accepted**: players who decided to play
 - **kontra**: if any
 - **value**: contract value
 - **play**
