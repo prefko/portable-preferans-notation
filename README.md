@@ -19,20 +19,20 @@ PPN notation has two sections:
 ### Info section
 Info section contains general information about the game such as location, date, etc.
 
-The information is organized in tag pairs, which are listed on individual lines and enclosed in square brackets [ ... ]. Each tag pair consists of a tag name and a value. The value is wrapped in double-quotes. In, for example, [Date "2008.03.08"], the tag name is **Date** and **2008.03.08** is the value.
+The information is organized in tag pairs, which are listed on individual lines and enclosed in square brackets [ ... ]. Each tag pair consists of a tag name and a value. The value is wrapped in double-quotes if it contains spaces. In, for example, [Date 2008.03.08], the tag name is **Date** and the tag value is **2008.03.08**.
 
 This section is identical to the top section of the **PGN** notation, see [example here](https://en.wikipedia.org/wiki/Portable_Game_Notation#Example).
 
-There are **required** and **optional** tags.
+There are **required** and *optional* tags.
 
-Required tags are **Bula**, **Refe**, **Player{A,B,C}**, **Place{1,2,3}** and **Result{1,2,3}**. (*Where {1,2,3} indicates that there are 3 separate tags, each with only one of those numbers, same for {A,B,C}*)
+**Required** tags are **Bula**, **Refe**, **Player{1,2,3}** and **Result{1,2,3}**. (*Where {1,2,3} indicates that there are 3 separate tags, each with only one of those numbers*)
 
-Optional tags can include, but are not limited to: *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{A,B,C}*, etc.
+*Optional* tags can include, but are not limited to: *Place{1,2,3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1,2,3}*, etc.
 
 ### Game section
-Dealtext secion contains individual rounds of play ordered chronologically. Each round is stored on a distinct line and contains fixed-ordered subsections. Each subsection is separated by a space character.
+Dealtext secion contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
 
-These subsections are:
+These subsections are, in order:
 - **id**: round order number
 - **dealer**: player id
 - **cards**
@@ -146,20 +146,20 @@ Relatively complex subsection encoding the tricks and score for all 3 players, c
 
 ### PPN Example
 
-[Bula "60"]  
-[Refe "2"]  
-[Player1 "cope"]  
-[Player2 "silvio_pu"]  
-[Player3 "elmacedon"]  
-[Place1 "silvio_pu"]  
-[Place2 "cope"]  
-[Place3 "elmacedon"]  
-[Result1 "458"]  
-[Result2 "88"]  
-[Result3 "-546"]  
+[Bula 60]  
+[Refe 2]  
+[Player1 cope]  
+[Player2 silvio_pu]  
+[Player3 elmacedon]  
+[Result1 458]  
+[Result2 88]  
+[Result3 -546]  
+[Place1 2]  
+[Place2 1]  
+[Place3 3]  
 
-1. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0  
-2. 2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P  
-3. 3 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L I 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0  
-4. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R S 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0  
+[1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0]  
+[2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
+[3 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L I 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0]  
+[1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R S 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0]  
 ...  
