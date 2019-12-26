@@ -164,23 +164,25 @@ For the main player, we use the letter M followed by the number of tricks taken 
 
 ### PPN Example
 
-[Bula 60]  
-[Refe 2]  
-[Player1 cope]  
-[Player2 silvio_pu]  
-[Player3 elmacedon]  
-[Result1 458]  
-[Result2 88]  
-[Result3 -546]  
-[Place1 2]  
-[Place2 1]  
-[Place3 3]  
+```ppn
+    [Bula 60]  
+    [Refe 2]  
+    [Player1 cope]  
+    [Player2 silvio_pu]  
+    [Player3 elmacedon]  
+    [Result1 458]  
+    [Result2 88]  
+    [Result3 -546]  
+    [Place1 2]  
+    [Place2 1]  
+    [Place3 3]  
 
-[1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 AR 4 3 I3 8 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-8,F3:L24,0]  
-[2 312 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
-[3 123 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 3 T3 5 2 I2 10 1 G9B3,2A13,G9B3,2A13,G9B3,2A13,2A13,G9B2,2A12,G9B2 F3:L24,0,M7:-8]  
-[1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 GH 4 3 S3 64 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-64,F3:L192:64,0]  
-...  
+    [1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 AR 4 3 I3 8 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-8,F3:L24,0]  
+    [2 312 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
+    [3 123 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 3 T3 5 2 I2 10 1 G9B3,2A13,G9B3,2A13,G9B3,2A13,2A13,G9B2,2A12,G9B2 F3:L24,0,M7:-8]  
+    [1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 GH 4 3 S3 64 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-64,F3:L192:64,0]  
+    ...  
+```
 
 ### JSON
 The PPN notation can also be represented in the JSON format.
