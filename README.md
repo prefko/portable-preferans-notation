@@ -25,36 +25,41 @@ This section is identical to the top section of the **PGN** notation, see [examp
 
 There are **required** and *optional* tags.
 
-**Required** tags are **Bula**, **Refe**, **Player{1,2,3}** and **Result{1,2,3}**. (*Where {1,2,3} indicates that there are 3 separate tags, each with only one of those numbers*)
+**Required** tags are **Bula**, **Refe**, **Player{1|2|3}** and **Result{1|2|3}**. (*Where {1|2|3} indicates that there are 3 separate tags, each with only one of those numbers*)
 
-*Optional* tags can include, but are not limited to: *Place{1,2,3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1,2,3}*, etc.
+*Optional* tags can include, but are not limited to: *Place{1|2|3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1|2|3}*, etc.
 
 ### Game section
 Dealtext secion contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
 
 These subsections are, in order:
-- **id**: round order number
+- **id**: deal order number
 - **deal order**: order in which players were dealt the cards
-- **cards**
+- **cards**: cards as were dealt
 - **auction**: highest auction values
-- **main**: main player id
+- **main**: main player id (auction winner)
 - **discarded**: discarded cards, if any
 - **contract**: chosen contract
 - **accepted**: players who decided to play
 - **kontra**: if any
+- **refa**: if any
 - **value**: contract value
-- **play order**: order in which players will start playing
+- **starts**: player id
 - **throws**
 - **summary**: tricks & scores
 
 #### id
-The id is basically a number followed by a dot.
+The id of the deal.
 
 #### deal order
-A 3 integer encoding of the order in which the players were dealt their cards. The last intiger is the dealer. For example, **312** indicates that player 2 was the dealer and player 3 was the first one to receive the cards and the first one to auction.
+A 3 integer encoding of the order in which the players were dealt their cards. The last integer is the dealer. For example, **312** indicates that player 2 was the dealer and player 3 was the first one to receive the cards and thus also the first one to auction.
 
 #### cards
-32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 talon cards. Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
+32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 talon cards.
+
+Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
+
+This section is connected to the previous **deal order** section, such that the first 10 characters are cards dealt to the player listed in the order as the first one.
 
 For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are concatenated hands and talon cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
 
@@ -96,7 +101,7 @@ Cards are encoded based on the following table:
 | A Club     | AC   | W    |
 
 #### auction
-The auction subsection contains 3 comma separated values which represent the highest bid for each of the 3 players.
+The auction subsection contains 3 comma separated values which represent the highest bid for each of the 3 players. This section is also connected to the **deal order** section, such that the first value corresponds to the first player listed in the deal order.
 This may seem confusing at first, but is actually enough to extract the entire auction.
 
 We know that the first player has only 3 options: pass, 2 or game. Depending on his choice, the second player also has a very limited set of options, and the same holds for the third player as well.
@@ -108,47 +113,70 @@ Let's see a few examples:
 - 2,G4,G - the auction went as follows: 2, game, game, hearts, yours wins
 and so on...
 
+#### main
+ID of the main player, the one who won the auction.
+
 #### discarded
 This subsection contains 2 characters, indicating the two cards which the main player discarded before choosing the contract.
-In case of a game, this subsection is equal to XX.
+In case of a game, this subsection is **XX**.
 
 #### contract
 A number indicating the chosen contract. This number can be preceded by the letter G, indicating that it was a game without seeing the bonus cards.
 
+Possible values are:
+
+| Contract   | Name      | Contract   | Name           |
+| ---------- | --------- | ---------- | -------------- |
+| 2          | Spade     | G2         | Game Spade     |
+| 3          | Diamond   | G3         | Game Diamond   |
+| 4          | Heart     | G4         | Game Heart     |
+| 5          | Club      | G5         | Game Club      |
+| 6          | Betl      | G6         | Game Betl      |
+| 7          | Sans      | G7         | Game Sans      |
+| 8          | Preferans | G8         | Game Preferans |
+
 #### accepted
 One character subsection indicating which followers decided to play. There are 4 possible combinations:
-- 0 - both followers decided to not play
-- L - only the first follower decided to play
-- R - only the second follower decided to play
-- B - both followers decided to play
+- 0 - both followers decided not to follow
+- {1|2|3} - only playerX decided to follow
+- 8 - both followers decided to follow (*8 is common because it resembles letter B for both, but anything >=4 works here*)
 
 #### kontra
 One or two character subsection indicating any kontras or invitations.
 
 This subsection is simply encoded as follows:
 - 0: Nothing
-- I{L,R}: Invitation
-- K{L,R}: Kontra
-- R{L,R}: Rekontra
-- S{L,R}: Subkontra
-- M{L,R}: Mortkontra
+- I{1|2|3}: Invitation
+- K{1|2|3}: Kontra
+- R{1|2|3}: Rekontra
+- S{1|2|3}: Subkontra
+- M{1|2|3}: Mortkontra
 
-{L,R} means that one of the letters L or R is used here to indicate which follower initiated the kontras. For example, RL means that the left follower started with a kontra and the main player returned a rekontra.
+{1|2|3} means that one of the integers 1, 2 or 3 is used here to indicate which player initiated the kontras. For example, R1 means that player1 started with a kontra and the main player returned a rekontra.
+
+#### refa
+Either 0 for none or 1 for this deal being a refa (*double value*).
 
 #### value
 An intiger indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
 
-#### play order
-A 2 or 3 letter encoding of the order in which th eplayers will start playing. For example **ML** means that the main player will start first, and the left follower will play second. Or, **LMR** means that left starts, main plays second and right plays third.
+#### starts
+ID of the player who starts the game by throwing the first card.
 
 #### throws
-Simple subsection showing the entire game play, a list of comma separated throws encoded with 4 or 5 characters, depending on the number of players involved. The first and last characters are always one of M, L or R indicating which player started and respectively which player won that trick. M for main, L for left follower and R for right follower. The characters in between indicate the cards as they were thrown.
+Simple subsection showing the entire game play, a list of comma separated throws encoded with 3 or 3 characters, depending on the number of players involved.
+The last character is always one of 1, 2 or 3 indicating which player won that trick. That player is also the player who throws the first card in the next trick.
+The characters before the last one indicate the cards as they were thrown.
 
-For example, M2A1M means that the main player threw 8 Spade, then the first follower threw 8 Diamond and the second follower threw 7 Spade, thus the main player won that trick.
+For example, **2A11** after either **1** for the starter value, or **xxx1** as the previous trick, means that player1 started with 8-Spade, then player2 threw 8-Diamond and player3 threw 7-Spade, thus player1 won that trick.
 
 #### summary
-Relatively complex subsection encoding the tricks and score for all 3 players, comma separated. The simplest case is 0 which is used when the player did not play. For the follower
-The only other case contains 4 integers, colon separated. The first integer is the number of tricks the player took. The remaining 3 integers are, in order, the left soup, the middle and the right soup.
+Relatively complex subsection encoding the tricks and score for all 3 players, comma separated and tied to the **deal order** above. The simplest case is 0 which is used when the player did not play.
+
+For the follower player, we use the letter F followed by the number of tricks taken by this player and then his score, for example **F3:L60** means that the player followed, took 3 tricks and will add 60 in the left column.
+Another example would be **F1:L20:20** indicating that the player followed, took only 1 trick, will add 20 in the left column, but also failed and will be adding 20 in the middle column as well.
+
+For the main player, we use the letter M followed by the number of tricks taken and his addition/subtraction in the middle column, for example **M6:-20** for passing, or **M5:20** for failing.
 
 ### PPN Example
 
@@ -164,8 +192,63 @@ The only other case contains 4 integers, colon separated. The first integer is t
 [Place2 1]  
 [Place3 3]  
 
-[1 2 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0]  
-[2 3 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
-[3 1 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L IL 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0]  
-[1 2 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R SR 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0]  
+[1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 AR 4 3 I3 8 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-8,F3:L24,0]  
+[2 312 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
+[3 123 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 3 T3 5 2 I2 10 1 G9B3,2A13,G9B3,2A13,G9B3,2A13,2A13,G9B2,2A12,G9B2 F3:L24,0,M7:-8]  
+[1 231 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 2 GH 4 3 S3 64 2 2A12,M9B2,2A12,M9B2,2A12,M9B2,2A12,G9B3,2A13,G9B3 M7:-64,F3:L192:64,0]  
 ...  
+
+### JSON
+The PPN notation can also be represented in the JSON format.
+
+##### JSON Example
+```json
+{
+  "id": 1,
+  "dealOrder": 231,
+  "cards": {
+    "p1": "1BDHM27WQK",
+    "p2": "4CEIN3FVRJ",
+    "p3": "S5LP8GU6AO",
+    "t": "T9"
+  },
+  "auction": {
+    "p1": "M3",
+    "p2": "P",
+    "p3": "3"
+  },
+  "main": 2,
+  "discarded": "AR",
+  "contract": 4,
+  "accepted": 8,
+  "kontra": "I3",
+  "refa": false,
+  "value": 4,
+  "starts": 2,
+  "throws": [
+    {
+      "id": 1,
+      "first": 2,
+      "cards": "2A1",
+      "winner": 2
+    },
+    "..."
+  ],
+  "summary": {
+    "p1": {
+      "main": false,
+      "tricks": 2,
+      "left": 60
+    },
+    "p2": {
+      "main": true,
+      "tricks": 7,
+      "middle": -8
+    },
+    "p3": {
+      "main": false,
+      "tricks": 1
+    }
+  }
+}
+```
