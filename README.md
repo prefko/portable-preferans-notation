@@ -34,27 +34,29 @@ Dealtext secion contains individual rounds of play ordered chronologically. Each
 
 These subsections are, in order:
 - **id**: round order number
-- **dealer**: player id
+- **deal order**: order in which players were dealt the cards
 - **cards**
-- **auction**: auction result
+- **auction**: highest auction values
+- **main**: main player id
 - **discarded**: discarded cards, if any
 - **contract**: chosen contract
 - **accepted**: players who decided to play
 - **kontra**: if any
 - **value**: contract value
+- **play order**: order in which players will start playing
 - **throws**
-- **score**: tricks & scores
+- **summary**: tricks & scores
 
 #### id
 The id is basically a number followed by a dot.
 
-#### dealer
-ID of the dealer, eg. 1.
+#### deal order
+A 3 integer encoding of the order in which the players were dealt their cards. The last intiger is the dealer. For example, **312** indicates that player 2 was the dealer and player 3 was the first one to receive the cards and the first one to auction.
 
 #### cards
-32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 bonus cards. Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
+32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 talon cards. Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
 
-For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are basically these concatenated hands and bonus cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
+For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are concatenated hands and talon cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
 
 Cards are encoded based on the following table:
 
@@ -125,7 +127,7 @@ One or two character subsection indicating any kontras or invitations.
 
 This subsection is simply encoded as follows:
 - 0: Nothing
-- I: Invitation
+- I{L,R}: Invitation
 - K{L,R}: Kontra
 - R{L,R}: Rekontra
 - S{L,R}: Subkontra
@@ -136,13 +138,17 @@ This subsection is simply encoded as follows:
 #### value
 An intiger indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
 
+#### play order
+A 2 or 3 letter encoding of the order in which th eplayers will start playing. For example **ML** means that the main player will start first, and the left follower will play second. Or, **LMR** means that left starts, main plays second and right plays third.
+
 #### throws
 Simple subsection showing the entire game play, a list of comma separated throws encoded with 4 or 5 characters, depending on the number of players involved. The first and last characters are always one of M, L or R indicating which player started and respectively which player won that trick. M for main, L for left follower and R for right follower. The characters in between indicate the cards as they were thrown.
 
 For example, M2A1M means that the main player threw 8 Spade, then the first follower threw 8 Diamond and the second follower threw 7 Spade, thus the main player won that trick.
 
-#### score
-Relatively complex subsection encoding the tricks and score for all 3 players, comma separated. The simplest case is 0 which is used when the player did not play. The only other case contains 4 integers, colon separated. The first integer is the number of tricks the player took. The remaining 3 integers are, in order, the left soup, the middle and the right soup.
+#### summary
+Relatively complex subsection encoding the tricks and score for all 3 players, comma separated. The simplest case is 0 which is used when the player did not play. For the follower
+The only other case contains 4 integers, colon separated. The first integer is the number of tricks the player took. The remaining 3 integers are, in order, the left soup, the middle and the right soup.
 
 ### PPN Example
 
@@ -158,8 +164,8 @@ Relatively complex subsection encoding the tricks and score for all 3 players, c
 [Place2 1]  
 [Place3 3]  
 
-[1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0]  
-[2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
-[3 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L I 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0]  
-[1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R S 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0]  
+[1 2 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0]  
+[2 3 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P]  
+[3 1 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L IL 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0]  
+[1 2 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R SR 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0]  
 ...  
