@@ -25,9 +25,9 @@ This section is identical to the top section of the **PGN** notation, see [examp
 
 There are **required** and *optional* tags.
 
-**Required** tags are **Bula**, **Refe**, **Player{1|2|3}** and **Result{1|2|3}**. (*Where {1|2|3} indicates that there are 3 separate tags, each with only one of those numbers*)
+**Required** tags are **Bula**, **Refe**, **Player{1\|2\|3}** and **Result{1\|2\|3}**. (*Where {1\|2\|3} indicates that there are 3 separate tags, each with only one of those numbers*)
 
-*Optional* tags can include, but are not limited to: *Place{1|2|3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1|2|3}*, etc.
+*Optional* tags can include, but are not limited to: *Place{1\|2\|3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1\|2\|3}*, etc.
 
 ### Game section
 Dealtext secion contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
@@ -138,7 +138,7 @@ Possible values are:
 #### accepted
 One character subsection indicating which followers decided to play. There are 4 possible combinations:
 - 0 - both followers decided not to follow
-- {1|2|3} - only playerX decided to follow
+- {1\|2\|3} - only playerX decided to follow
 - 8 - both followers decided to follow (*8 is common because it resembles letter B for both, but anything >=4 works here*)
 
 #### kontra
@@ -146,13 +146,13 @@ One or two character subsection indicating any kontras or invitations.
 
 This subsection is simply encoded as follows:
 - 0: Nothing
-- I{1|2|3}: Invitation
-- K{1|2|3}: Kontra
-- R{1|2|3}: Rekontra
-- S{1|2|3}: Subkontra
-- M{1|2|3}: Mortkontra
+- I{1\|2\|3}: Invitation
+- K{1\|2\|3}: Kontra
+- R{1\|2\|3}: Rekontra
+- S{1\|2\|3}: Subkontra
+- M{1\|2\|3}: Mortkontra
 
-{1|2|3} means that one of the integers 1, 2 or 3 is used here to indicate which player initiated the kontras. For example, R1 means that player1 started with a kontra and the main player returned a rekontra.
+{1\|2\|3} means that one of the integers 1, 2 or 3 is used here to indicate which player initiated the kontras. For example, R1 means that player1 started with a kontra and the main player returned a rekontra.
 
 #### refa
 Either 0 for none or 1 for this deal being a refa (*double value*).
