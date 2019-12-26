@@ -106,14 +106,14 @@ Let's see a few examples:
 - 2,G4,G - the auction went as follows: 2, game, game, hearts, yours wins
 and so on...
 
-#### exchange
+#### discarded
 This subsection contains 2 characters, indicating the two cards which the main player discarded before choosing the contract.
 In case of a game, this subsection is equal to XX.
 
-#### game
+#### contract
 A number indicating the chosen contract. This number can be preceded by the letter G, indicating that it was a game without seeing the bonus cards.
 
-#### came
+#### accepted
 One character subsection indicating which followers decided to play. There are 4 possible combinations:
 - 0 - both followers decided to not play
 - L - only the first follower decided to play
