@@ -65,40 +65,24 @@ For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are concate
 
 Cards are encoded based on the following table:
 
-| Card       | Mini | Encoded  |
-| ---------- | ---- | ---- |
-| 7 Spade    | 7S   | 1    |
-| 8 Spade    | 8S   | 2    |
-| 9 Spade    | 9S   | 3    |
-| 10 Spade   | XS   | 4    |
-| J Spade    | JS   | 5    |
-| Q Spade    | QS   | 6    |
-| K Spade    | KS   | 7    |
-| A Spade    | AS   | 8    |
-| 7 Diamond  | 7D   | 9    |
-| 8 Diamond  | 8D   | A    |
-| 9 Diamond  | 9D   | B    |
-| 10 Diamond | XD   | C    |
-| J Diamond  | JD   | D    |
-| Q Diamond  | QD   | E    |
-| K Diamond  | KD   | F    |
-| A Diamond  | AD   | G    |
-| 7 Heart    | 7H   | H    |
-| 8 Heart    | 8H   | I    |
-| 9 Heart    | 9H   | J    |
-| 10 Heart   | XH   | K    |
-| J Heart    | JH   | L    |
-| Q Heart    | QH   | M    |
-| K Heart    | KH   | N    |
-| A Heart    | AH   | O    |
-| 7 Club     | 7C   | P    |
-| 8 Club     | 8C   | Q    |
-| 9 Club     | 9C   | R    |
-| 10 Club    | XC   | S    |
-| J Club     | JC   | T    |
-| Q Club     | QC   | U    |
-| K Club     | KC   | V    |
-| A Club     | AC   | W    |
+| Card       | Mini | Encoded |  -  | Card       | Mini | Encoded |
+| ---------- | ---- | ------- | --- | ---------- | ---- | ------- |
+| 7 Spade    | 7S   | 1       |     | 7 Heart    | 7H   | H       |
+| 8 Spade    | 8S   | 2       |     | 8 Heart    | 8H   | I       |
+| 9 Spade    | 9S   | 3       |     | 9 Heart    | 9H   | J       |
+| 10 Spade   | XS   | 4       |     | 10 Heart   | XH   | K       |
+| J Spade    | JS   | 5       |     | J Heart    | JH   | L       |
+| Q Spade    | QS   | 6       |     | Q Heart    | QH   | M       |
+| K Spade    | KS   | 7       |     | K Heart    | KH   | N       |
+| A Spade    | AS   | 8       |     | A Heart    | AH   | O       |
+| 7 Diamond  | 7D   | 9       |     | 7 Club     | 7C   | P       |
+| 8 Diamond  | 8D   | A       |     | 8 Club     | 8C   | Q       |
+| 9 Diamond  | 9D   | B       |     | 9 Club     | 9C   | R       |
+| 10 Diamond | XD   | C       |     | 10 Club    | XC   | S       |
+| J Diamond  | JD   | D       |     | J Club     | JC   | T       |
+| Q Diamond  | QD   | E       |     | Q Club     | QC   | U       |
+| K Diamond  | KD   | F       |     | K Club     | KC   | V       |
+| A Diamond  | AD   | G       |     | A Club     | AC   | W       |
 
 #### auction
 The auction subsection contains 3 comma separated values which represent the highest bid for each of the 3 players. This section is also connected to the **deal order** section, such that the first value corresponds to the first player listed in the deal order.
@@ -125,15 +109,15 @@ A number indicating the chosen contract. This number can be preceded by the lett
 
 Possible values are:
 
-| Contract   | Name      | Contract   | Name           |
-| ---------- | --------- | ---------- | -------------- |
-| 2          | Spade     | G2         | Game Spade     |
-| 3          | Diamond   | G3         | Game Diamond   |
-| 4          | Heart     | G4         | Game Heart     |
-| 5          | Club      | G5         | Game Club      |
-| 6          | Betl      | G6         | Game Betl      |
-| 7          | Sans      | G7         | Game Sans      |
-| 8          | Preferans | G8         | Game Preferans |
+| Contract   | Name      |  -  | Contract   | Name           |
+| ---------- | --------- | --- | ---------- | -------------- |
+| 2          | Spade     |     | G2         | Game Spade     |
+| 3          | Diamond   |     | G3         | Game Diamond   |
+| 4          | Heart     |     | G4         | Game Heart     |
+| 5          | Club      |     | G5         | Game Club      |
+| 6          | Betl      |     | G6         | Game Betl      |
+| 7          | Sans      |     | G7         | Game Sans      |
+| 8          | Preferans |     | G8         | Game Preferans |
 
 #### accepted
 One character subsection indicating which followers decided to play. There are 4 possible combinations:
