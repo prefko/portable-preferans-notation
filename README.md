@@ -214,7 +214,7 @@ The PPN notation can also be represented in the JSON format.
   "throws": [
     {
       "id": 1,
-      "first": 2,
+      "starts": 2,
       "cards": "2A1",
       "winner": 2
     },
