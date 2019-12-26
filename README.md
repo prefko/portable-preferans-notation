@@ -42,7 +42,7 @@ These subsections are:
 - **accepted**: players who decided to play
 - **kontra**: if any
 - **value**: contract value
-- **play**
+- **throws**
 - **score**: tricks & scores
 
 #### id
@@ -131,35 +131,35 @@ This subsection is simply encoded as follows:
 - S{L,R}: Subkontra
 - M{L,R}: Mortkontra
 
-{L,R} means that one of the letters L or R is used here to indicate which follower initiated the kontras. For example, RL means that the left follower started with a kontra and th emain player returned a rekontra.
+{L,R} means that one of the letters L or R is used here to indicate which follower initiated the kontras. For example, RL means that the left follower started with a kontra and the main player returned a rekontra.
 
 #### value
 An intiger indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
 
-#### play
-Simple subsection showing the entire game play, a list of comma separated tricks encoded with 3 or 4 character, depending on the number of players involved. The last character is always one of M, L or R indicating which player won that trick. M for main, L for left follower and R for right follower. The characters preceding the winner indicate the cards as they were thrown.
+#### throws
+Simple subsection showing the entire game play, a list of comma separated throws encoded with 4 or 5 characters, depending on the number of players involved. The first and last characters are always one of M, L or R indicating which player started and respectively which player won that trick. M for main, L for left follower and R for right follower. The characters in between indicate the cards as they were thrown.
 
-For example, 2A1M means that the first player threw 8 Spade, then the second player threw 8 Diamond and the third player threw 7 Spade, and finally the main player won that trick. This also tells us who threw the first card in the next trick, while the very first tricks first thrower must be deduced from other information like who the dealer is and whether or not the contract was Sans.
+For example, M2A1M means that the main player threw 8 Spade, then the first follower threw 8 Diamond and the second follower threw 7 Spade, thus the main player won that trick.
 
 #### score
 Relatively complex subsection encoding the tricks and score for all 3 players, comma separated. The simplest case is 0 which is used when the player did not play. The only other case contains 4 integers, colon separated. The first integer is the number of tricks the player took. The remaining 3 integers are, in order, the left soup, the middle and the right soup.
 
 ### PPN Example
 
-[Bula "60"]  
-[Refe "2"]  
-[Player1 "cope"]  
-[Player2 "silvio_pu"]  
-[Player3 "elmacedon"]  
-[Place1 "silvio_pu"]  
-[Place2 "cope"]  
-[Place3 "elmacedon"]  
-[Result1 "458"]  
-[Result2 "88"]  
-[Result3 "-546"]  
+[Bula "60"]
+[Refe "2"]
+[Player1 "cope"]
+[Player2 "silvio_pu"]
+[Player3 "elmacedon"]
+[Place1 "silvio_pu"]
+[Place2 "cope"]
+[Place3 "elmacedon"]
+[Result1 "458"]
+[Result2 "88"]
+[Result3 "-546"]
 
-1. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0  
-2. 2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P  
-3. 3 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L I 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0  
-4. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R S 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0  
-...  
+1. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 AR 4 L 0 8 2A1M,M9BM,2A1M,M9BM,2A1M,M9BM,2A1M,G9BR,2A1R,G9BR 7:0:-8:0,3:24:0:0,0
+2. 2 WQKJS5LP84CEIAOT9N31BDH7FVM2RGU6 P,P,P
+3. 3 4U6ADHM2OT9CEIN31B7WQKFVRJS5LP8G P,2,3 T3 5 L I 10 G9BM,2A1M,G9BM,2A1M,G9BM,2A1M,2A1M,G9BR,2A1R,G9BR 3:24:0:0,0,7:0:-8:0
+4. 1 1BDHM27WQK4CEIN3FVRJS5LP8GU6AOT9 M3,P,3 GH 4 R S 64 2A1M,G9BM,2A1M,G9BM,2A1M,G9BG,2A1G,G9BR,2A1R,G9BR 7:0:-64:0,3:192:64:0,0
+...
