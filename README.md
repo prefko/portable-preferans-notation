@@ -36,7 +36,7 @@ These subsections are, in order:
 - **id**: deal order number
 - **deal order**: order in which players were dealt the cards
 - **cards**: cards as were dealt
-- **auction**: highest auction values
+- **bids**: highest bid values
 - **main**: main player id (auction winner)
 - **discarded**: discarded cards, if any
 - **contract**: chosen contract
@@ -52,7 +52,7 @@ These subsections are, in order:
 The id of the deal.
 
 #### deal order
-A 3 integer encoding of the order in which the players were dealt their cards. The last integer is the dealer. For example, **312** indicates that player 2 was the dealer and player 3 was the first one to receive the cards and thus also the first one to auction.
+A 3 integer encoding of the order in which the players were dealt their cards. The last integer is the dealer. For example, **312** indicates that player 2 was the dealer and player 3 was the first one to receive the cards and thus also the first one to bid.
 
 #### cards
 32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 talon cards.
@@ -84,9 +84,9 @@ Cards are encoded based on the following table:
 | K Diamond  | KD   | F       |     | K Club     | KC   | V       |
 | A Diamond  | AD   | G       |     | A Club     | AC   | W       |
 
-#### auction
-The auction subsection contains 3 comma separated values which represent the highest bid for each of the 3 players. This section is also connected to the **deal order** section, such that the first value corresponds to the first player listed in the deal order.
-This may seem confusing at first, but is actually enough to extract the entire auction.
+#### bids
+The bids subsection contains 3 comma separated values which represent the highest bid for each of the 3 players. This section is also connected to the **deal order** section, such that the first value corresponds to the first player listed in the deal order.
+This may seem confusing at first, but is actually enough to extract all bids.
 
 We know that the first player has only 3 options: pass, 2 or game. Depending on his choice, the second player also has a very limited set of options, and the same holds for the third player as well.
 In fact, right after the first round, all players will have only one possible option to choose, other than to opt out of the auction, of course.
@@ -198,7 +198,7 @@ The PPN notation can also be represented in the JSON format.
     "p3": "S5LP8GU6AO",
     "t": "T9"
   },
-  "auction": {
+  "bids": {
     "p1": "M3",
     "p2": "P",
     "p3": "3"
