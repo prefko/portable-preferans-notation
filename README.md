@@ -5,7 +5,7 @@
 # Portable Preferans Notation - PPN
 [portable-preferans-notation](https://prefko.github.io/portable-preferans-notation/)
 
-**Portable Preferans Notation** (PPN) is a computer-processible format for recording and replaying [Preferans](https://en.wikipedia.org/wiki/Preference) games. It was invented in 2012. for internal database usage of the online preferans website [Prefko](http://prefko.com/).
+**Portable Preferans Notation** (PPN) is a computer-processible format for recording and replaying [Preferans](https://en.wikipedia.org/wiki/Preference) games. It was invented in 2012 for internal database usage of the online preferans website [Prefko](http://prefko.com/).
 
 **PPN** is based completely on the well known **PGN chess notation** (Portable Game Notation). For more information about PGN please visit this [Wikipedia article](https://en.wikipedia.org/wiki/Portable_Game_Notation). There are many PGN viewers/readers [available online](https://goo.gl/uqZvX6).
 
@@ -30,7 +30,7 @@ There are **required** and *optional* tags.
 *Optional* tags can include, but are not limited to: *Place{1\|2\|3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1\|2\|3}*, etc.
 
 ### Game section
-Dealtext secion contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
+Dealtext section contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
 
 These subsections are, in order:
 - **id**: deal order number
@@ -142,7 +142,7 @@ This subsection is simply encoded as follows:
 Either 0 for none or 1 for this deal being a refa (*double value*).
 
 #### value
-An intiger indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
+An integer indicating the value of the contract. For example, 8 for a simple contract of hearts or a game of diamonds or even for a contract of spades under refa.
 
 #### starts
 ID of the player who starts the game by throwing the first card.
