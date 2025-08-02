@@ -25,9 +25,22 @@ This section is identical to the top section of the **PGN** notation, see [examp
 
 There are **required** and *optional* tags.
 
-**Required** tags are **Bula**, **Refe**, **Player{1\|2\|3}** and **Result{1\|2\|3}**. (*Where {1\|2\|3} indicates that there are 3 separate tags, each with only one of those numbers*)
+**Required Tags**
+- **Bula**
+- **Refe**
+- **Player{1\|2\|3}**
+- **Result{1\|2\|3}**
+  - (*Where {1\|2\|3} indicates that there are 3 separate tags, each with only one of those numbers*)
 
-*Optional* tags can include, but are not limited to: *Place{1\|2\|3}* *Location*, *Date*, *StartTime*, *EndTime*, *Duration*, *Name{1\|2\|3}*, etc.
+**Optional Tags**
+- *Place{1\|2\|3}*
+- *Location*
+- *Date*
+- *StartTime*
+- *EndTime*
+- *Duration*
+- *Name{1\|2\|3}*
+- etc.
 
 ### Game section
 Dealtext section contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
