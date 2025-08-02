@@ -5,6 +5,21 @@
 # Portable Preferans Notation - PPN
 [portable-preferans-notation](https://prefko.github.io/portable-preferans-notation/)
 
+## Table of Contents
+- [Overview](#overview)
+- [PPN Structure](#ppn)
+  - [Info Section](#info-section)
+    - [Required Tags](#required-tags)
+    - [Optional Tags](#optional-tags)
+  - [Game Section](#game-section)
+    - [Subsection Structure](#subsection-structure)
+    - [Individual Subsections](#individual-subsections)
+- [PPN Example](#ppn-example)
+- [JSON Format](#json)
+- [Glossary](#glossary)
+
+## Overview
+
 **Portable Preferans Notation** (PPN) is a computer-processible format for recording and replaying [Preferans](https://en.wikipedia.org/wiki/Preference) games. It was invented in 2012 for internal database usage of the online preferans website [Prefko](http://prefko.com/).
 
 **PPN** is based completely on the well known **PGN chess notation** (Portable Game Notation). For more information about PGN please visit this [Wikipedia article](https://en.wikipedia.org/wiki/Portable_Game_Notation). There are many PGN viewers/readers [available online](https://goo.gl/uqZvX6).
@@ -13,8 +28,8 @@
 
 ## PPN
 PPN notation has two sections:
-- Info section
-- Game section
+- [Info section](#info-section)
+- [Game section](#game-section)
 
 ### Info section
 Info section contains general information about the game such as location, date, etc.
@@ -45,21 +60,23 @@ There are **required** and *optional* tags.
 ### Game section
 Dealtext section contains individual rounds of play ordered chronologically. Each round and enclosed in square brackets [ ... ] and contains fixed-ordered subsections, separated by a space character.
 
-These subsections are, in order:
-- **id**: deal order number
-- **deal order**: order in which players were dealt the cards
-- **cards**: cards as were dealt
-- **bids**: highest bid values
-- **main**: main player id (auction winner)
-- **discarded**: discarded cards, if any
-- **contract**: chosen contract
-- **accepted**: players who decided to play
-- **kontra**: if any
-- **refa**: if any
-- **value**: contract value
-- **starts**: player id
-- **throws**
-- **summary**: tricks & scores
+#### Subsection Structure
+These subsections are included in each deal record, in the following order:
+
+1. **id**: deal order number
+2. **deal order**: order in which players were dealt the cards
+3. **cards**: cards as were dealt
+4. **bids**: highest bid values
+5. **main**: main player id (auction winner)
+6. **discarded**: discarded cards, if any
+7. **contract**: chosen contract
+8. **accepted**: players who decided to play
+9. **kontra**: if any
+10. **refa**: if any
+11. **value**: contract value
+12. **starts**: player id
+13. **throws**: sequence of card plays
+14. **summary**: tricks & scores
 
 #### id
 The id of the deal.
@@ -70,12 +87,15 @@ A 3 integer encoding of the order in which the players were dealt their cards. T
 #### cards
 32 characters, each representing one of the cards as they were dealt to the players. First 10 characters were dealt to the first player, and so on. The last 2 characters represent the 2 talon cards.
 
+##### Card Distribution Format
 Each 10 character set which represents cards dealt to a particular player are written as they were dealt, first 5 cards dealt and then second 5 cards dealt.
 
-This section is connected to the previous **deal order** section, such that the first 10 characters are cards dealt to the player listed in the order as the first one.
+This section is connected to the **deal order** subsection (described above), such that the first 10 characters are cards dealt to the player listed first in the deal order.
 
+##### Example Card String
 For example, the encoded cards like 1BDHM27YQK4CEIN3FVRJS5LP8GU6AOT9 are concatenated hands and talon cards 1BDHM27YQK, 4CEIN3FVRJ, S5LP8GU6AO and T9.
 
+##### Card Encoding Table
 Cards are encoded based on the following table:
 
 | Card       | Mini | Encoded |  -  | Card       | Mini | Encoded |
@@ -251,3 +271,46 @@ The PPN notation can also be represented in the JSON format.
   }
 }
 ```
+
+## Glossary
+
+### Preferans Game Terms
+
+**Betl** - A contract type where the goal is to take no tricks
+
+**Bula** - The number of deals in a complete game session
+
+**Contract** - The commitment made by the main player about how many tricks they will take
+
+**Deal Order** - The sequence in which cards are dealt to players, with the last digit indicating the dealer
+
+**Follower** - A player who is not the main player and decides whether to play the deal or pass
+
+**Kontra** - A declaration that doubles the stakes of a deal
+- **Invitation** (I): An offer to double stakes
+- **Kontra** (K): Acceptance of doubling
+- **Rekontra** (R): Re-doubling after kontra
+- **Subkontra** (S): Further doubling
+- **Mortkontra** (M): Maximum doubling level
+
+**Main Player** - The player who won the auction and must fulfill the contract
+
+**Preferans** - The highest contract type (8), requiring taking all 10 tricks
+
+**Refa** - A deal that counts for double points (indicated by value 1 in the refa field)
+
+**Refe** - The number of refa deals in the game
+
+**Sans** - A contract type where the goal is to take exactly 0 tricks
+
+**Talon** - The 2 cards that remain after dealing 10 cards to each of the 3 players
+
+### PPN Technical Terms
+
+**Deal Record** - A complete encoding of one round of play, enclosed in square brackets
+
+**Tag Pair** - A key-value pair in the info section, formatted as [Key Value]
+
+**Throws** - The sequence of cards played during the tricks, encoded with winner information
+
+**Trick** - One round of card play where each active player plays one card
